@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'verification',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,6 +125,7 @@ DEFAULT_FROM_EMAIL = "My App"
 #used .env file
 EMAIL_HOST_USER = config('E_EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = config('E_EMAIL_HOST_PASSWORD')
+PASSWORD_RESET_TIMEOUT = 120
 
 #When using environ variables 
 # EMAIL_HOST_USER = os.environ.get('E_EMAIL_HOST_USER')
