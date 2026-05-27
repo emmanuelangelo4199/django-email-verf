@@ -5,9 +5,9 @@ class Email(models.Model):
     message = models.TextField(max_length=500)
     email = models.EmailField()
     created_at = models.DateTimeField(auto_now_add=True, blank=True, null=True)
-    edited_at = models.DateTimeField(auto_now_add=True)
+    edited_at = models.DateTimeField(auto_now=True)
 
 
     def __str__(self):
-        return self.id
+        return self.subject
 

@@ -11,5 +11,5 @@ class EmailForms(ModelForm):
     )
 
     class Meta:
-        models = Email
+        model = Email
         exclude = ['created_at', 'edited_at', 'message', 'subject']

@@ -33,6 +33,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'crispy_bootstrap4',
     'verification',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,6 +43,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,7 +62,9 @@ ROOT_URLCONF = 'em_pro.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'templates')
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,19 +127,26 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = "My App"
+DEFAULT_FROM_EMAIL = 'My App <emmanuelmezie578@gmail.com>'
 
 #used .env file
-EMAIL_HOST_USER = config('E_EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('E_EMAIL_HOST_PASSWORD')
-PASSWORD_RESET_TIMEOUT = 120
+# EMAIL_HOST_USER = config('E_EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('E_EMAIL_HOST_PASSWORD')
+PASSWORD_RESET_TIMEOUT = 86400
 
 #When using environ variables 
-# EMAIL_HOST_USER = os.environ.get('E_EMAIL_HOST_USER')
-# EMAIL_HOST_PASSWORD = os.environ.get('E_EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = os.environ.get('E_EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('E_EMAIL_HOST_PASSWORD')
 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'verification', 'static')]
+
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
